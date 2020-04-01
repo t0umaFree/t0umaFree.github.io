@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>TEST | t0uma Blog</title>
+  <title>“正则CTF | t0uma Blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="TEST | t0uma Blog">
+  <meta name="description" content="“正则CTF | t0uma Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Why Blog��־��Ϊ Cyber Network Engineer�������������t0umaNetworkSEC RESERACH ��t0uma��Ryan.Yang���ĸ���վ�� ��ĿǰΪֹ�Ѿ�д��ƪ���£� ���֡� ��վ�����������˴� �� ���������� ����ƽ̨�������ͨ�� Hexo ���ɣ������� GitHub">
 <meta property="og:type" content="website">
@@ -181,25 +181,19 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-1" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-“正则CTF" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">TEST</h1>
+        <h1 class="article-title">“正则CTF</h1>
     
     <div class="article-meta">
         
         
-        
-        <span class="book">
-            
-                <a  data-rel="��͸֪ʶ">��͸֪ʶ</a>
-            
-        </span>
         
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-04-01 02:31:14'>2020-04-01 15:13</time>
+        创建时间:<time class="date" title='更新时间: 2020-04-02 01:04:52'>2020-04-02 01:04</time>
         
     </div>
     <div class="article-meta">
@@ -237,7 +231,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>yeyeye</p>
+        <p>正则表达式<br><?php
+$key='flag{********************************}'; $Regular= preg_match("/zkaq.key.{2,9}:/./(key*key)/i", trim($_GET["id"]), $match); if( $Regular ){
+die('key: '.$key); } ?></p>
+<p>函数部分：</p>
+<p>preg_match(正则表达式，匹配的字符串) 匹配第一个匹配正则的子字符串，未找到返回0，找到返回1</p>
+<p>trim($_GET[“id”]) 接受ID传参过来的字符串 trim函数（string,charlist） string 必须<br>charlist 可选 如果省略，则移除下列所有字符 “\0” null “\t” 制符表 “\n” 换行 “\r” 回车 “” 空格</p>
+<p>if( $Regular ){ die(‘key: ‘.$key); }</p>
+<p>if (1){}执行；if(0){}不执行；</p>
+<p>die();输出，并退出。</p>
+<p>正则表达式部分:</p>
+<p>PHP的正则表达式要写在/ /之间。</p>
+<p>. 匹配除换行符 \n 之外的任何单字符。</p>
+<p>匹配前面的子表达式零次或多次。<br>{n,m}： m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}” 将匹配 “fooood” 中的前三个o。请注意在逗号和两个数之间不能有空格。</p>
+<p>\： 将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n’ 匹配字符 ‘n’。’\n’ 匹配换行符。序列 ‘&#39; 匹配 “”，而 ‘(‘ 则匹配 “(“。</p>
+<p>i：标记指定不区分大小写。</p>
+<p>：连接字符，直接输出。</p>
+<p>“/zkaq.key.{2,9}:/./(key*key)/i”</p>
+<p>需要将其拆分成几部分：</p>
+<p>/zkaq.*/</p>
+<p>/key.{2,9}/</p>
+<p>/ :/.*/ /</p>
+<p>/ （key*key）/i</p>
+<p>/zkaq./ 表示开头为zkaq后面随意接除换行符 \n 之外的任何单字符，因为是. 如果是*的话只能接zkaqqqq或者zkaq等 直接输出zkaq</p>
+<p>/key.{2,9}/ 表示key 后面随意接2-9个除换行符 \n 之外的任何单字符 keytouma</p>
+<p>/ :/.<em>/ / ：为连接字符可以直接输出，\为转义字符 转义后面的/ .</em>可以随意输出除换行符 \n 之外的任何单字符。 后面的/一样是转义字符，中间字符可以省略不管，直接输出:// （:/123/也可以）</p>
+<p>/ （keykey）/i keykey 中间可以插入 随意个数的y keyyyyyykey 或者keykey 所以这里可其实是 y*key 表示”ke”和”key”之间有0-N个字符”y”（N为非负整数）。 输出keyyykey</p>
+<p>key： zkaqkeytouma://keyyykey</p>
+<p>最后在靶机上面?id=输入key</p>
+<p>得到FLAG()：</p>
+<p>key: flag{regular_god_code}</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 635452287@qq.com </span>
@@ -251,12 +274,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>TEST</p>
+    <p><span class="copy-title">文章标题:</span>“正则CTF</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="t0uma">t0uma</a></p>
-    <p><span class="copy-title">发布时间:</span>2020-04-01, 15:13:47</p>
-    <p><span class="copy-title">最后更新:</span>2020-04-01, 02:31:14</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/01/1/" title="TEST">http://yoursite.com/2020/04/01/1/</a>
+    <p><span class="copy-title">发布时间:</span>2020-04-02, 01:04:33</p>
+    <p><span class="copy-title">最后更新:</span>2020-04-02, 01:04:52</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/02/%E2%80%9C%E6%AD%A3%E5%88%99CTF/" title="“正则CTF">http://yoursite.com/2020/04/02/%E2%80%9C%E6%AD%A3%E5%88%99CTF/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
